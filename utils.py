@@ -40,9 +40,12 @@ class get_stock_historical_data():
         s = response.text
 
         # make response.text look better
+        # it will show in the tkinter toplevel text
         s = re.sub(r',' , '\t\t' , s)
 
-        table = response.text.split('\n')    # get a table of stock data, type:str
+        table = response.text.split('\n')    # get stock data, type:str
+        
+        # store data by a dictonary
         for i in range(len(table)):
             table[i] = table[i].split(',')
         self.dict = {}
@@ -59,6 +62,8 @@ class get_stock_historical_data():
 
 if __name__ == '__main__':    # test
     a = get_stock_historical_data()
+    # use the default value to test
+    # it will show data of Shanghai pudong Development bank
     a.get_stocktype()
     a.get_stock_code()
     a.get_dayfrom()
